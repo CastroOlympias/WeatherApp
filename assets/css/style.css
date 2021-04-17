@@ -14,7 +14,7 @@
 }
 
 /* Start search form for your city */
-.city-search {
+#city-search {
     padding: 5px;
     font-size: 26px;
     border-radius: 5px;
