@@ -17,6 +17,8 @@
 .city-search {
     padding: 5px;
     font-size: 26px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 .submit-btn {
@@ -42,6 +44,8 @@
 
 .current-weather {
     padding: 10px;
+    display: flex;
+    Flex-direction: column;
 }
 
 .climate {
@@ -52,8 +56,6 @@
 
 /* Start weather borders */
 .borders {
-    display: flex;
-    Flex-direction: column;
     border: 1px solid black;
     margin: 20px;
 }
