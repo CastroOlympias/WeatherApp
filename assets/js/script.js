@@ -6,7 +6,7 @@ var searchTerm = document.querySelector('#city-search')
 function findWeather(event) {
 event.preventDefault();
 searchTerm = document.querySelector('#city-search').value;
-//console.log(searchTerm);
+console.log(searchTerm);
 
     // current day weather and server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
@@ -17,12 +17,11 @@ searchTerm = document.querySelector('#city-search').value;
         return response.json();
     })
     .then(function(response) {
-        //console.log(response);
-        //console.log(response.name);
+        console.log(response);
 
         var findCity = document.querySelector('#city-search').value;
         localStorage.setItem('City', JSON.stringify(findCity));
-        
+        console.log(findCity)
 
         // current days climate
         var currentCityEl = document.querySelector('#city-date')
@@ -55,8 +54,7 @@ searchTerm = document.querySelector('#city-search').value;
         return response.json();
     })
     .then(function(response) {
-        //console.log(response);
-        //console.log(response.name);
+        console.log(response);
 
         // Plus one day wearther forecast
         var dayOneDateEl = document.querySelector('#day-one')
@@ -114,17 +112,17 @@ searchTerm = document.querySelector('#city-search').value;
         dayFiveWindEl.textContent = "Wind: " + response.list[35].wind.speed + " Mph";
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
 
-        loadWeather();
+        //loadWeather();
     })
 
     
 }
 
 
-var loadWeather = function() {
-findCity = JSON.parse(localStorage.getItem('City'))
-findCity.textContent = searchTerm;
-console.log(searchTerm)
-}
+// var loadWeather = function() {
+// findCity = JSON.parse(localStorage.getItem('City'))
+// findCity.textContent = searchTerm;
+// console.log(searchTerm)
+// }
 
 submitBtn.onclick = findWeather;
