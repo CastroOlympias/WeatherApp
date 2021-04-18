@@ -70,7 +70,16 @@
 }
 
 .five-days {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     background: rgb(27, 97, 124);
     color: white;
+    font-size: 20px;
+    padding: 10px 7px 10px 7px;
+}
+
+.five-days h3 {
+    font-size: 20px;
 }
 /* End future forecast */
