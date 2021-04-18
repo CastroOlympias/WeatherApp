@@ -1,21 +1,26 @@
 var submitBtn = document.querySelector('#submit-btn');
 var searchTerm = document.querySelector('#city-search')
 
+// Starts with an empty array
 var findCity = [];
 // console.log(localStorage.getItem("City"));
+
+// gets local storage string of historical city searches and puts them back into an array
 findCity = JSON.parse(localStorage.getItem('City')) || [];
 // console.log(findCity);
 
 function findWeather(event) {
 event.preventDefault();
-var searchTerm = document.querySelector('#city-search').value;
-console.log(searchTerm);
-findCity.push(searchTerm);
 
-localStorage.setItem('City', JSON.stringify(findCity));
-console.log(findCity)
+    // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
+    var searchTerm = document.querySelector('#city-search').value;
+    console.log(searchTerm);
+    findCity.push(searchTerm);
 
-    // current day weather and server api call
+    localStorage.setItem('City', JSON.stringify(findCity));
+    console.log(findCity)
+
+    // current day weather with with current weather server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
     searchTerm + 
     '&units=imperial&exclude=hourly,minutely,alerts&appid=0372eaa7cde1ce19de6c28dd0eb2454c')
@@ -27,12 +32,9 @@ console.log(findCity)
     .then(function(response) {
         console.log(response);
 
-        // Save histroy of searched cities
-
-
-        // current days climate
+        // current days weather
         var currentCityEl = document.querySelector('#city-date')
-        currentCityEl.textContent = response.name + response.weather[0].icon;
+        currentCityEl.textContent = response.name + response.weather[0].id;
 
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
@@ -50,7 +52,7 @@ console.log(findCity)
         cityWetEl.textContent = "Humidity: " + response.main.humidity + " % ";
     })
   
-    // Five day forecast and server api call
+    // Five day forecast with forecast server api call
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' +
     searchTerm + 
     '&units=imperial&exclude=hourly,minutely,alerts&appid=0372eaa7cde1ce19de6c28dd0eb2454c')
@@ -117,18 +119,7 @@ console.log(findCity)
         dayFiveTempEl.textContent = "Temp: " + response.list[35].main.temp + " °F";
         dayFiveWindEl.textContent = "Wind: " + response.list[35].wind.speed + " Mph";
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
-
-        //loadWeather();
     })
-
-    
 }
-
-
-// var loadWeather = function() {
-// findCity = JSON.parse(localStorage.getItem('City'))
-// findCity.textContent = searchTerm;
-// console.log(searchTerm)
-// }
 
 submitBtn.onclick = findWeather;
