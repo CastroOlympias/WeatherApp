@@ -1,12 +1,15 @@
 var submitBtn = document.querySelector('#submit-btn');
 var searchTerm = document.querySelector('#city-search')
 
+var findCity = [];
+
 
 
 function findWeather(event) {
 event.preventDefault();
-searchTerm = document.querySelector('#city-search').value;
+var searchTerm = document.querySelector('#city-search').value;
 console.log(searchTerm);
+findCity.push(searchTerm);
 
     // current day weather and server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
@@ -15,18 +18,18 @@ console.log(searchTerm);
 
     .then(function(response) {
         return response.json();
+        
     })
     .then(function(response) {
         console.log(response);
 
-        var findCity = document.querySelector('#city-search').value;
+        // Save histroy of searched cities
         localStorage.setItem('City', JSON.stringify(findCity));
         console.log(findCity)
 
         // current days climate
         var currentCityEl = document.querySelector('#city-date')
         currentCityEl.textContent = response.name;
-
 
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
