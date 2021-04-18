@@ -18,9 +18,14 @@ console.log(searchTerm);
         console.log(response);
         console.log(response.name);
 
-        // current days climate
-        var cityDateEl = document.querySelector('#city-date')
+        searchTerm = document.querySelector('#city-search').value;
+        localStorage.setItem('City', JSON.stringify(searchTerm));
         
+
+        // current days climate
+        var currentCityEl = document.querySelector('#city-date')
+        currentCityEl.textContent = response.name;
+
 
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
@@ -109,4 +114,16 @@ console.log(searchTerm);
     })
 }
 
+
+
+
 submitBtn.onclick = findWeather;
+
+var loadSavedCity = function() {
+    searchTerm = JSON.parse(localStorage.getItem('City'))
+    searchTerm.textContent = searchTerm;
+
+}
+loadSavedCity()
+
+///findWeather();
