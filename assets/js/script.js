@@ -1,10 +1,12 @@
 var submitBtn = document.querySelector('#submit-btn');
+var searchTerm = document.querySelector('#city-search')
+
 
 
 function findWeather(event) {
 event.preventDefault();
-var searchTerm = document.querySelector('#city-search').value;
-console.log(searchTerm);
+searchTerm = document.querySelector('#city-search').value;
+//console.log(searchTerm);
 
     // current day weather and server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
@@ -15,11 +17,11 @@ console.log(searchTerm);
         return response.json();
     })
     .then(function(response) {
-        console.log(response);
-        console.log(response.name);
+        //console.log(response);
+        //console.log(response.name);
 
-        searchTerm = document.querySelector('#city-search').value;
-        localStorage.setItem('City', JSON.stringify(searchTerm));
+        var findCity = document.querySelector('#city-search').value;
+        localStorage.setItem('City', JSON.stringify(findCity));
         
 
         // current days climate
@@ -53,8 +55,8 @@ console.log(searchTerm);
         return response.json();
     })
     .then(function(response) {
-        console.log(response);
-        console.log(response.name);
+        //console.log(response);
+        //console.log(response.name);
 
         // Plus one day wearther forecast
         var dayOneDateEl = document.querySelector('#day-one')
@@ -111,19 +113,18 @@ console.log(searchTerm);
         dayFiveTempEl.textContent = "Temp: " + response.list[35].main.temp + " °F";
         dayFiveWindEl.textContent = "Wind: " + response.list[35].wind.speed + " Mph";
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
+
+        loadWeather();
     })
+
+    
 }
 
 
-
+var loadWeather = function() {
+findCity = JSON.parse(localStorage.getItem('City'))
+findCity.textContent = searchTerm;
+console.log(searchTerm)
+}
 
 submitBtn.onclick = findWeather;
-
-var loadSavedCity = function() {
-    searchTerm = JSON.parse(localStorage.getItem('City'))
-    searchTerm.textContent = searchTerm;
-
-}
-loadSavedCity()
-
-///findWeather();
