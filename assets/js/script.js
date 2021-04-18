@@ -9,6 +9,7 @@ var findCity = [];
 findCity = JSON.parse(localStorage.getItem('City')) || [];
 // console.log(findCity);
 
+submitBtn.onclick = findWeather;
 function findWeather(event) {
 event.preventDefault();
 
@@ -122,4 +123,6 @@ event.preventDefault();
     })
 }
 
-submitBtn.onclick = findWeather;
+// for looping through the array of previously searched cities
+for (var i = 0; i < 10; i++);
+console.log(findCity);
