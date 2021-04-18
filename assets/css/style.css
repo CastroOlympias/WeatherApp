@@ -73,7 +73,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background: rgb(27, 97, 124);
+    background: linear-gradient(140deg, rgb(80, 124, 141), rgb(122, 125, 126));
     color: white;
     font-size: 20px;
     padding: 10px 7px 10px 7px;
