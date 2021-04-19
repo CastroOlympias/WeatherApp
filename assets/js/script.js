@@ -1,6 +1,9 @@
 var submitBtn = document.querySelector('#submit-btn');
 var searchTerm = document.querySelector('#city-search')
-
+var icon = history.ref = 'http://openweathermap.org/img/wn/';
+        console.log(icon);
+var curIcon = document.querySelector('#icon');
+var last = '@2x.png';
 // Starts with an empty array
 var findCity = [];
 // console.log(localStorage.getItem("City"));
@@ -12,6 +15,8 @@ findCity = JSON.parse(localStorage.getItem('City')) || [];
 submitBtn.onclick = findWeather;
 function findWeather(event) {
 event.preventDefault();
+
+
 
     // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
     var searchTerm = document.querySelector('#city-search').value;
@@ -32,11 +37,16 @@ event.preventDefault();
     })
     .then(function(response) {
         console.log(response);
-
         // current days weather
+        
+        curIcon = response.weather[0].icon;
+        console.log(curIcon);
         var currentCityEl = document.querySelector('#city-date')
-        currentCityEl.textContent = response.name + response.weather[0].id;
+        currentCityEl.textContent = response.name + icon + curIcon + last;
 
+        currentCityEl.textContent = response.name + 'http://openweathermap.org/img/wn/' + curIcon + '@2x.png';
+
+        
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
 
