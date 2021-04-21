@@ -2,18 +2,13 @@ var submitBtn = document.querySelector('#submit-btn');
 var searchTerm = document.querySelector('#city-search')
 
 
-// this conole logged a complete word "this"
+// this conole logged a complete word "this" as test of my understanding
 var one = "th"
 var two = "i"
 var three = "s"
 var whole = one + two + three
 console.log(whole);
-// this conole logged a complete word so "this"
-
-
-
-
-
+//  this conole logged a complete word "this" as test of my understanding
 
 // Starts with an empty array
 var findCity = [];
@@ -23,24 +18,41 @@ var findCity = [];
 findCity = JSON.parse(localStorage.getItem('City')) || [];
 // console.log(findCity);
 
+
+    // This foor loop is to append only the last 10 items found in the array of the search history
+    // var history = document.querySelector('#history');
+    // function searchHistory() {
+    //     for (var i = findCity.length -1; i >= 0; i--) {
+    //         console.log(findCity[i])
+    //         var button = document.createElement('button')
+    //         button.textContent = findCity[i]
+    //         history.appendChild(button)
+    //         console.log(button)
+    //     }
+    // }
+    // searchHistory();
+
+
+
+
+
+
+
+// submit button begins the fuction to collect and apend the weather data
 submitBtn.onclick = findWeather;
 function findWeather(event) {
 event.preventDefault();
 
 
-
-
-
-    // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
-    var searchTerm = document.querySelector('#city-search').value;
-    console.log(searchTerm);
-    searchTerm.toLowerCase;
-    if (findCity.indexOf(searchTerm)=== -1) {
-        findCity.push(searchTerm);
-        localStorage.setItem('City', JSON.stringify(findCity));
-        console.log(findCity)
-    }
-    
+       // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
+       var searchTerm = document.querySelector('#city-search').value;
+       console.log(searchTerm);
+       searchTerm.toLowerCase();
+       if (findCity.indexOf(searchTerm)=== -1) {
+           findCity.push(searchTerm);
+           localStorage.setItem('City', JSON.stringify(findCity));
+           console.log(findCity)
+       }
 
     
 
@@ -55,24 +67,16 @@ event.preventDefault();
     .then(function(response) {
         console.log(response);
 
+        // This appends the weather the icon to the page
         var iconPartOne = 'http://openweathermap.org/img/wn/';
         var iconPartTwo = response.weather[0].icon;
         var iconPartThree = '@2x.png';
         var wholeIcon = iconPartOne + iconPartTwo + iconPartThree;
         console.log(wholeIcon);
 
-
-
         var iconWhole = document.querySelector('#weather-icon')
         iconWhole.setAttribute('src', wholeIcon);
-
-        // icon = 'url=http://openweathermap.org/img/wn/' + response.weather[0].icon + '@2x.png';
-        // iconWhole.image = icon;
-        // console.log(iconWhole);
-        
-
-
-
+       
         // current days weather
         var currentCityEl = document.querySelector('#city-date')
         currentCityEl.textContent = response.name;
