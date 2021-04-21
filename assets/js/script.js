@@ -1,9 +1,20 @@
 var submitBtn = document.querySelector('#submit-btn');
 var searchTerm = document.querySelector('#city-search')
-var icon = history.ref = 'http://openweathermap.org/img/wn/';
-        console.log(icon);
-var curIcon = document.querySelector('#icon');
-var last = '@2x.png';
+
+
+// this conole logged a complete word "this"
+var one = "th"
+var two = "i"
+var three = "s"
+var whole = one + two + three
+console.log(whole);
+// this conole logged a complete word so "this"
+
+
+
+
+
+
 // Starts with an empty array
 var findCity = [];
 // console.log(localStorage.getItem("City"));
@@ -18,13 +29,20 @@ event.preventDefault();
 
 
 
+
+
     // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
     var searchTerm = document.querySelector('#city-search').value;
     console.log(searchTerm);
-    findCity.push(searchTerm);
+    searchTerm.toLowerCase();
+    if (findCity.indexOf(searchTerm)=== -1) {
+        findCity.push(searchTerm);
+        localStorage.setItem('City', JSON.stringify(findCity));
+        console.log(findCity)
+    }
+    
 
-    localStorage.setItem('City', JSON.stringify(findCity));
-    console.log(findCity)
+    
 
     // current day weather with with current weather server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
@@ -32,21 +50,33 @@ event.preventDefault();
     '&units=imperial&exclude=hourly,minutely,alerts&appid=0372eaa7cde1ce19de6c28dd0eb2454c')
 
     .then(function(response) {
-        return response.json();
-        
+        return response.json();   
     })
     .then(function(response) {
         console.log(response);
+
+        var iconPartOne = 'http://openweathermap.org/img/wn/';
+        var iconPartTwo = response.weather[0].icon;
+        var iconPartThree = '@2x.png';
+        var wholeIcon = iconPartOne + iconPartTwo + iconPartThree;
+        console.log(wholeIcon);
+
+
+
+        var iconWhole = document.querySelector('#weather-icon')
+        iconWhole.setAttribute('src', wholeIcon);
+
+        // icon = 'url=http://openweathermap.org/img/wn/' + response.weather[0].icon + '@2x.png';
+        // iconWhole.image = icon;
+        // console.log(iconWhole);
+        
+
+
+
         // current days weather
-        
-        curIcon = response.weather[0].icon;
-        console.log(curIcon);
         var currentCityEl = document.querySelector('#city-date')
-        currentCityEl.textContent = response.name + icon + curIcon + last;
+        currentCityEl.textContent = response.name;
 
-        currentCityEl.textContent = response.name + 'http://openweathermap.org/img/wn/' + curIcon + '@2x.png';
-
-        
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
 
