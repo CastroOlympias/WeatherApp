@@ -34,7 +34,7 @@ event.preventDefault();
     // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
     var searchTerm = document.querySelector('#city-search').value;
     console.log(searchTerm);
-    searchTerm.toLowerCase();
+    searchTerm.toLowerCase;
     if (findCity.indexOf(searchTerm)=== -1) {
         findCity.push(searchTerm);
         localStorage.setItem('City', JSON.stringify(findCity));
