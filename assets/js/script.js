@@ -16,26 +16,21 @@ var findCity = [];
 
 // gets local storage string of historical city searches and puts them back into an array
 findCity = JSON.parse(localStorage.getItem('City')) || [];
-// console.log(findCity);
+console.log(findCity);
 
 
-    // This foor loop is to append only the last 10 items found in the array of the search history
-    // var history = document.querySelector('#history');
-    // function searchHistory() {
-    //     for (var i = findCity.length -1; i >= 0; i--) {
-    //         console.log(findCity[i])
-    //         var button = document.createElement('button')
-    //         button.textContent = findCity[i]
-    //         history.appendChild(button)
-    //         console.log(button)
-    //     }
-    // }
-    // searchHistory();
-
-
-
-
-
+// This foor loop is to append only the last 10 items found in the array of the search history
+// var history = document.querySelector('#history');
+// function searchHistory() {
+//     for (var i = findCity.length -1; i >= 0; i--) {
+//         console.log(findCity[i])
+//         var button = document.createElement('button')
+//         button.textContent = findCity[i]
+//         //history.appendChild(button)
+//         console.log(button)
+//     }
+// }
+// searchHistory();
 
 
 // submit button begins the fuction to collect and apend the weather data
@@ -44,15 +39,20 @@ function findWeather(event) {
 event.preventDefault();
 
 
-       // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
-       var searchTerm = document.querySelector('#city-search').value;
-       console.log(searchTerm);
-       searchTerm.toLowerCase();
-       if (findCity.indexOf(searchTerm)=== -1) {
-           findCity.push(searchTerm);
-           localStorage.setItem('City', JSON.stringify(findCity));
-           console.log(findCity)
-       }
+    // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
+    var searchTerm = document.querySelector('#city-search').value;
+
+
+    // findCity = searchTerm;
+    // var lowerCase = findCity.toLowerCase();
+    // console.log(lowerCase)
+
+    console.log(searchTerm);
+    if (findCity.indexOf(searchTerm)=== -1) {
+    findCity.push(searchTerm);
+    localStorage.setItem('City', JSON.stringify(findCity));
+    console.log(findCity)
+    }
 
     // current day weather with with current weather server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
@@ -164,7 +164,7 @@ event.preventDefault();
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
     })
 }
-
 // for looping through the array of previously searched cities
-for (var i = 0; i < 10; i++);
-console.log(findCity);
+// for (var i = 0; i < 10; i++);
+// console.log(findCity);
+
