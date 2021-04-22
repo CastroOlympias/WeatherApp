@@ -42,9 +42,14 @@
     margin: 2px;
 }
 
-#city-weather-icon {
+#city-date {
+    font-size: 50px;
+}
+
+#city-weather-icon-container {
     display: flex;
     flex-direction: row;
+    height: 75px;
 }
 
 .current-weather {
@@ -58,11 +63,6 @@
     font-size: 20px;
 }
 
-#current-weather-icon {
-    width: 60px;
-    height: 60px;
-    border: none;
-}
 /* End weather for current day */
 
 /* Start weather borders */
