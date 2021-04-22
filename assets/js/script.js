@@ -54,8 +54,6 @@ event.preventDefault();
            console.log(findCity)
        }
 
-    
-
     // current day weather with with current weather server api call
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' +
     searchTerm + 
@@ -67,15 +65,15 @@ event.preventDefault();
     .then(function(response) {
         console.log(response);
 
-        // This appends the weather the icon to the page
-        var iconPartOne = 'http://openweathermap.org/img/wn/';
-        var iconPartTwo = response.weather[0].icon;
-        var iconPartThree = '@2x.png';
-        var wholeIcon = iconPartOne + iconPartTwo + iconPartThree;
-        console.log(wholeIcon);
+        // This appends the curent weather icon to the page
+        var currentWeathericonPartOne = 'http://openweathermap.org/img/wn/';
+        var currentWeathericonPartTwo = response.weather[0].icon;
+        var currentWeathericonPartThree = '@2x.png';
+        var currentWholeIcon = currentWeathericonPartOne + currentWeathericonPartTwo + currentWeathericonPartThree;
+        console.log(currentWholeIcon);
 
-        var iconWhole = document.querySelector('#weather-icon')
-        iconWhole.setAttribute('src', wholeIcon);
+        var currentIconWhole = document.querySelector('#current-weather-icon')
+        currentIconWhole.setAttribute('src', currentWholeIcon);
        
         // current days weather
         var currentCityEl = document.querySelector('#city-date')
