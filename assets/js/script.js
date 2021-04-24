@@ -18,19 +18,18 @@ var findCity = [];
 findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
 
-
 // This foor loop is to append only the last 10 items found in the array of the search history
-// var history = document.querySelector('#history');
-// function searchHistory() {
-//     for (var i = findCity.length -1; i >= 0; i--) {
-//         console.log(findCity[i])
-//         var button = document.createElement('button')
-//         button.textContent = findCity[i]
-//         //history.appendChild(button)
-//         console.log(button)
-//     }
-// }
-// searchHistory();
+var history = document.querySelector('history');
+function searchHistory() {
+    for (var i = findCity.length -1; i >= 10; i--) {
+        console.log(findCity[i])
+        var button = document.createElement('button')
+        button.textContent = findCity[i]
+        history.appendChild(button)
+        console.log(button)
+    }
+}
+searchHistory();
 
 
 // submit button begins the fuction to collect and apend the weather data
