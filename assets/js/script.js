@@ -19,17 +19,24 @@ findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
 
 // This foor loop is to append only the last 10 items found in the array of the search history
-var history = document.querySelector('history');
-function searchHistory() {
-    for (var i = findCity.length -1; i >= 0; i--) {
-        console.log(findCity[i])
-        var button = document.createElement('button')
-        button.textContent = findCity[i]
-        // history.appendChild(button)
-        console.log(button)
-    }
+
+// function searchHistory() {
+//     for (var i = findCity.length -1; i >= 0; i--) {
+//         console.log(findCity[i])
+//         var button = document.createElement('button')
+//         button.textContent = findCity[i]
+//         history.appendChild(button)
+//         console.log(button)
+//     }
+// }
+// searchHistory();
+
+function createBtn (searchValue) {
+    var history = document.querySelector('#history');
+    var lI = document.createElement('li')
+    lI.textContent = searchValue
+    history.append(lI)
 }
-searchHistory();
 
 
 // submit button begins the fuction to collect and apend the weather data
@@ -41,15 +48,15 @@ event.preventDefault();
     // Sets the searched cities as an arraay and stores into a variable for storage as a string of historical searches
     var searchTerm = document.querySelector('#city-search').value;
 
-
+    createBtn(searchTerm)
     // findCity = searchTerm;
     // var lowerCase = findCity.toLowerCase();
     // console.log(lowerCase)
    
-
-    console.log(searchTerm);
-    if (findCity.indexOf(searchTerm.toLowerCase())=== -1) {
-    findCity.push(searchTerm);
+    var lowerCase = searchTerm.toLowerCase()
+    console.log(lowerCase);
+    if (findCity.indexOf(lowerCase)=== -1) {
+    findCity.push(lowerCase);
     localStorage.setItem('City', JSON.stringify(findCity));
     console.log(findCity)
     }
