@@ -73,16 +73,6 @@ event.preventDefault();
     .then(function(response) {
         console.log(response);
 
-        // This appends the curent weather icon to the page
-        var currentWeathericonPartOne = 'http://openweathermap.org/img/wn/';
-        var currentWeathericonPartTwo = response.weather[0].icon;
-        var currentWeathericonPartThree = '@2x.png';
-        var currentWholeIcon = currentWeathericonPartOne + currentWeathericonPartTwo + currentWeathericonPartThree;
-        console.log(currentWholeIcon);
-
-        var currentIconWhole = document.querySelector('#current-weather-icon')
-        currentIconWhole.setAttribute('src', currentWholeIcon);
-       
         // current days weather
         var currentCityEl = document.querySelector('#city-date')
         currentCityEl.textContent = response.name;
@@ -101,6 +91,18 @@ event.preventDefault();
 
         var cityWetEl = document.querySelector('#humid')
         cityWetEl.textContent = "Humidity: " + response.main.humidity + " % ";
+
+        
+
+         // This appends the curent weather icon to the page
+         var currentWeathericonPartOne = 'http://openweathermap.org/img/wn/';
+         var currentWeathericonPartTwo = response.weather[0].icon;
+         var currentWeathericonPartThree = '@2x.png';
+         var currentWholeIcon = currentWeathericonPartOne + currentWeathericonPartTwo + currentWeathericonPartThree;
+         console.log(currentWholeIcon);
+ 
+         var currentIconWhole = document.querySelector('#current-weather-icon')
+         currentIconWhole.setAttribute('src', currentWholeIcon);
     })
   
     // Five day forecast with forecast server api call
@@ -126,6 +128,16 @@ event.preventDefault();
         dayOneWindEl.textContent = "Wind: " + response.list[3].wind.speed + " Mph";
         dayOneHumEl.textContent = "Humid: " + response.list[3].main.humidity + " %";
 
+        // This appends the plus 1 day weather icon to the page
+        var plusOneWeatherIconPartOne = 'http://openweathermap.org/img/wn/';
+        var plusOneWeatherIconPartTwo = response.list[3].weather[0].icon;
+        var plusOneWeatherIconPartThree = '@2x.png';
+        var plusOneWholeIcon = plusOneWeatherIconPartOne + plusOneWeatherIconPartTwo + plusOneWeatherIconPartThree;
+        console.log(plusOneWholeIcon);
+
+        var plusOneIcon = document.querySelector('#plus-one-weather-icon')
+        plusOneIcon.setAttribute('src', plusOneWholeIcon);
+
         
         // Plus two days wearther forecast
         var dayTwoDateEl = document.querySelector('#day-two')
@@ -148,6 +160,7 @@ event.preventDefault();
         dayThreeTempEl.textContent = "Temp: " + response.list[19].main.temp + " °F";
         dayThreeWindEl.textContent = "Wind: " + response.list[19].wind.speed + " Mph";
         dayThreeHumEl.textContent = "Humid: " + response.list[19].main.humidity + " %";
+
 
         // Plus four days wearther forecast
         var dayFourDateEl = document.querySelector('#day-four')
