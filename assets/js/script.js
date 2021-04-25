@@ -139,7 +139,7 @@ event.preventDefault();
         plusOneIcon.setAttribute('src', plusOneWholeIcon);
 
         
-        // Plus two days wearther forecast
+        // Plus 2 days wearther forecast
         var dayTwoDateEl = document.querySelector('#day-two')
         var dayTwoTempEl = document.querySelector('#day-two-temp')
         var dayTwoWindEl = document.querySelector('#day-two-wind')
@@ -150,7 +150,18 @@ event.preventDefault();
         dayTwoWindEl.textContent = "Wind: " + response.list[11].wind.speed + " Mph";
         dayTwoHumEl.textContent = "Humid: " + response.list[11].main.humidity + " %";
 
-        // Plus three days wearther forecast
+        // This appends the plus 2 day weather icon to the page
+        var plusTwoWeatherIconPartOne = 'http://openweathermap.org/img/wn/';
+        var plusTwoWeatherIconPartTwo = response.list[11].weather[0].icon;
+        var plusTwoWeatherIconPartThree = '@2x.png';
+        var plusTwoWholeIcon = plusTwoWeatherIconPartOne + plusTwoWeatherIconPartTwo + plusTwoWeatherIconPartThree;
+        console.log(plusTwoWholeIcon);
+
+        var plusTwoIcon = document.querySelector('#plus-two-weather-icon')
+        plusTwoIcon.setAttribute('src', plusTwoWholeIcon);
+
+
+        // Plus 3 days wearther forecast
         var dayThreeDateEl = document.querySelector('#day-three')
         var dayThreeTempEl = document.querySelector('#day-three-temp')
         var dayThreeWindEl = document.querySelector('#day-three-wind')
@@ -161,8 +172,18 @@ event.preventDefault();
         dayThreeWindEl.textContent = "Wind: " + response.list[19].wind.speed + " Mph";
         dayThreeHumEl.textContent = "Humid: " + response.list[19].main.humidity + " %";
 
+        // This appends the plus 3 day weather icon to the page
+        var plusThreeWeatherIconPartOne = 'http://openweathermap.org/img/wn/';
+        var plusThreeWeatherIconPartTwo = response.list[19].weather[0].icon;
+        var plusThreeWeatherIconPartThree = '@2x.png';
+        var plusThreeWholeIcon = plusThreeWeatherIconPartOne + plusThreeWeatherIconPartTwo + plusThreeWeatherIconPartThree;
+        console.log(plusThreeWholeIcon);
 
-        // Plus four days wearther forecast
+        var plusThreeIcon = document.querySelector('#plus-three-weather-icon')
+        plusThreeIcon.setAttribute('src', plusThreeWholeIcon);
+
+
+        // Plus 4 days wearther forecast
         var dayFourDateEl = document.querySelector('#day-four')
         var dayFourTempEl = document.querySelector('#day-four-temp')
         var dayFourWindEl = document.querySelector('#day-four-wind')
@@ -173,7 +194,17 @@ event.preventDefault();
         dayFourWindEl.textContent = "Wind: " + response.list[27].wind.speed + " Mph";
         dayFourHumEl.textContent = "Humid: " + response.list[27].main.humidity + " %";
 
-        // Plus five days wearther forecast
+        // This appends the plus 4 day weather icon to the page
+        var plusFourWeatherIconPartOne = 'http://openweathermap.org/img/wn/';
+        var plusFourWeatherIconPartTwo = response.list[27].weather[0].icon;
+        var plusFourWeatherIconPartThree = '@2x.png';
+        var plusFourWholeIcon = plusFourWeatherIconPartOne + plusFourWeatherIconPartTwo + plusFourWeatherIconPartThree;
+        console.log(plusFourWholeIcon);
+
+        var plusFourIcon = document.querySelector('#plus-four-weather-icon')
+        plusFourIcon.setAttribute('src', plusFourWholeIcon);
+
+        // Plus 5 days wearther forecast
         var dayFiveDateEl = document.querySelector('#day-five')
         var dayFiveTempEl = document.querySelector('#day-five-temp')
         var dayFiveWindEl = document.querySelector('#day-five-wind')
@@ -183,6 +214,16 @@ event.preventDefault();
         dayFiveTempEl.textContent = "Temp: " + response.list[35].main.temp + " °F";
         dayFiveWindEl.textContent = "Wind: " + response.list[35].wind.speed + " Mph";
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
+
+        // This appends the plus 5 day weather icon to the page
+        var plusFiveWeatherIconPartOne = 'http://openweathermap.org/img/wn/';
+        var plusFiveWeatherIconPartTwo = response.list[35].weather[0].icon;
+        var plusFiveWeatherIconPartThree = '@2x.png';
+        var plusFiveWholeIcon = plusFiveWeatherIconPartOne + plusFiveWeatherIconPartTwo + plusFiveWeatherIconPartThree;
+        console.log(plusFiveWholeIcon);
+
+        var plusFiveIcon = document.querySelector('#plus-five-weather-icon')
+        plusFiveIcon.setAttribute('src', plusFiveWholeIcon);
     })
 }
 // for looping through the array of previously searched cities
