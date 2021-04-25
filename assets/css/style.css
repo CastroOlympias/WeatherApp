@@ -43,14 +43,22 @@
     margin: 2px;
 }
 
-#city-date {
+#city {
+    font-size: 50px;
+}
+#current-date {
     font-size: 50px;
 }
 
 #city-weather-icon-container {
     display: flex;
     flex-direction: row;
-    
+}
+
+.city-date-icon {
+    padding: 10px;
+    display: flex;
+    Flex-direction: column;
 }
 
 .current-weather {

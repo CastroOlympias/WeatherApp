@@ -74,8 +74,14 @@ event.preventDefault();
         console.log(response);
 
         // current days weather
-        var currentCityEl = document.querySelector('#city-date')
+        var currentCityEl = document.querySelector('#city')
         currentCityEl.textContent = response.name;
+
+        // Current Date pus formatting date
+        var date = document.querySelector('#current-date')
+        var today = moment().format('(MM/DD/YY)');
+        console.log(today)
+        date.textContent = today    
 
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
