@@ -50,7 +50,7 @@
 #city-weather-icon-container {
     display: flex;
     flex-direction: row;
-    height: 75px;
+    
 }
 
 .current-weather {
@@ -84,7 +84,7 @@
 .five-days {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     background: linear-gradient(140deg, rgb(80, 124, 141), rgb(122, 125, 126));
     color: white;
     font-size: 20px;
@@ -93,10 +93,6 @@
 
 .five-days h3 {
     font-size: 20px;
-}
-
-#forecast-icon {
-    height: 25px;
 }
 /* End future forecast */
 
