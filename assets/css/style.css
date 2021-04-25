@@ -93,14 +93,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-between;
     background: linear-gradient(140deg, rgb(80, 124, 141), rgb(122, 125, 126));
     color: white;
     font-size: 20px;
     padding: 10px 7px 10px 7px;
-}
-
-.five-days h3 {
-    font-size: 20px;
 }
 /* End future forecast */
 

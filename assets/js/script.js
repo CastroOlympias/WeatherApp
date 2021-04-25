@@ -77,11 +77,11 @@ event.preventDefault();
         var currentCityEl = document.querySelector('#city')
         currentCityEl.textContent = response.name;
 
-        // Current Date pus formatting date
-        var date = document.querySelector('#current-date')
+        // Current Date plus formatting date
+        var currentDate = document.querySelector('#current-date')
         var today = moment().format('(MM/DD/YY)');
         console.log(today)
-        date.textContent = today    
+        currentDate.textContent = today    
 
         var cityCurTempEl = document.querySelector('#cur-temp')
         cityCurTempEl.textContent = "Current Temperature: " + response.main.temp + " °F ";
@@ -98,8 +98,6 @@ event.preventDefault();
         var cityWetEl = document.querySelector('#humid')
         cityWetEl.textContent = "Humidity: " + response.main.humidity + " % ";
 
-        
-
          // This appends the curent weather icon to the page
          var currentWeathericonPartOne = 'http://openweathermap.org/img/wn/';
          var currentWeathericonPartTwo = response.weather[0].icon;
@@ -110,12 +108,16 @@ event.preventDefault();
          var currentIconWhole = document.querySelector('#current-weather-icon')
          currentIconWhole.setAttribute('src', currentWholeIcon);
     })
+
+    .catch(err => {
+        console.error(err);
+        alert("Check that you've spelled your city correctly!")
+    });
   
     // Five day forecast with forecast server api call
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' +
     searchTerm + 
     '&units=imperial&exclude=hourly,minutely,alerts&appid=0372eaa7cde1ce19de6c28dd0eb2454c')
-
 
     .then(function(response) {
         return response.json();
@@ -123,13 +125,17 @@ event.preventDefault();
     .then(function(response) {
         console.log(response);
 
-        // Plus one day wearther forecast
-        var dayOneDateEl = document.querySelector('#day-one')
+        // plus 1 day formatting date
+        var plusOneDate = document.querySelector('.day-one')
+        var dayPlusOne = moment().add(1, 'd').format('MM/DD/YY');
+        console.log(dayPlusOne)
+        plusOneDate.textContent = dayPlusOne;
+
+        // Plus 1 day wearther forecast
         var dayOneTempEl = document.querySelector('#day-one-temp')
         var dayOneWindEl = document.querySelector('#day-one-wind')
         var dayOneHumEl = document.querySelector('#day-one-hum')
 
-        dayOneDateEl.textContent = response.list[3].dt_txt;
         dayOneTempEl.textContent = "Temp: " + response.list[3].main.temp + " °F";
         dayOneWindEl.textContent = "Wind: " + response.list[3].wind.speed + " Mph";
         dayOneHumEl.textContent = "Humid: " + response.list[3].main.humidity + " %";
@@ -144,14 +150,18 @@ event.preventDefault();
         var plusOneIcon = document.querySelector('#plus-one-weather-icon')
         plusOneIcon.setAttribute('src', plusOneWholeIcon);
 
-        
+        // plus 2 day formatting date
+        var plusTwoDate = document.querySelector('.day-two')
+        var dayPlusTwo = moment().add(2, 'd').format('MM/DD/YY');
+        console.log(dayPlusTwo)
+        plusTwoDate.textContent = dayPlusTwo;
+
         // Plus 2 days wearther forecast
-        var dayTwoDateEl = document.querySelector('#day-two')
         var dayTwoTempEl = document.querySelector('#day-two-temp')
         var dayTwoWindEl = document.querySelector('#day-two-wind')
         var dayTwoHumEl = document.querySelector('#day-two-hum')
 
-        dayTwoDateEl.textContent = response.list[11].dt_txt;
+       
         dayTwoTempEl.textContent = "Temp: " + response.list[11].main.temp + " °F";
         dayTwoWindEl.textContent = "Wind: " + response.list[11].wind.speed + " Mph";
         dayTwoHumEl.textContent = "Humid: " + response.list[11].main.humidity + " %";
@@ -167,13 +177,19 @@ event.preventDefault();
         plusTwoIcon.setAttribute('src', plusTwoWholeIcon);
 
 
-        // Plus 3 days wearther forecast
-        var dayThreeDateEl = document.querySelector('#day-three')
+        // plus 3 day formatting date
+        var plusThreeDate = document.querySelector('.day-three')
+        var dayPlusThree = moment().add(3, 'd').format('MM/DD/YY');
+        console.log(dayPlusThree)
+        plusThreeDate.textContent = dayPlusThree;
+
+
+        // Plus 3 days weather forecast
+        
         var dayThreeTempEl = document.querySelector('#day-three-temp')
         var dayThreeWindEl = document.querySelector('#day-three-wind')
         var dayThreeHumEl = document.querySelector('#day-three-hum')
 
-        dayThreeDateEl.textContent = response.list[19].dt_txt;
         dayThreeTempEl.textContent = "Temp: " + response.list[19].main.temp + " °F";
         dayThreeWindEl.textContent = "Wind: " + response.list[19].wind.speed + " Mph";
         dayThreeHumEl.textContent = "Humid: " + response.list[19].main.humidity + " %";
@@ -189,13 +205,21 @@ event.preventDefault();
         plusThreeIcon.setAttribute('src', plusThreeWholeIcon);
 
 
+
+        // plus 4 day formatting date
+        var plusFourDate = document.querySelector('.day-four')
+        var dayPlusFour = moment().add(4, 'd').format('MM/DD/YY');
+        console.log(dayPlusFour)
+        plusFourDate.textContent = dayPlusFour;
+
+
         // Plus 4 days wearther forecast
-        var dayFourDateEl = document.querySelector('#day-four')
+  
         var dayFourTempEl = document.querySelector('#day-four-temp')
         var dayFourWindEl = document.querySelector('#day-four-wind')
         var dayFourHumEl = document.querySelector('#day-four-hum')
 
-        dayFourDateEl.textContent = response.list[27].dt_txt;
+ 
         dayFourTempEl.textContent = "Temp: " + response.list[27].main.temp + " °F";
         dayFourWindEl.textContent = "Wind: " + response.list[27].wind.speed + " Mph";
         dayFourHumEl.textContent = "Humid: " + response.list[27].main.humidity + " %";
@@ -210,13 +234,20 @@ event.preventDefault();
         var plusFourIcon = document.querySelector('#plus-four-weather-icon')
         plusFourIcon.setAttribute('src', plusFourWholeIcon);
 
+
+        // plus 5 day formatting date
+        var plusFiveDate = document.querySelector('.day-five')
+        var dayPlusFive = moment().add(5, 'd').format('MM/DD/YY');
+        console.log(dayPlusFive)
+        plusFiveDate.textContent = dayPlusFive;
+
         // Plus 5 days wearther forecast
-        var dayFiveDateEl = document.querySelector('#day-five')
+        
         var dayFiveTempEl = document.querySelector('#day-five-temp')
         var dayFiveWindEl = document.querySelector('#day-five-wind')
         var dayFiveHumEl = document.querySelector('#day-five-hum')
 
-        dayFiveDateEl.textContent = response.list[35].dt_txt;
+        
         dayFiveTempEl.textContent = "Temp: " + response.list[35].main.temp + " °F";
         dayFiveWindEl.textContent = "Wind: " + response.list[35].wind.speed + " Mph";
         dayFiveHumEl.textContent = "Humid: " + response.list[35].main.humidity + " %";
