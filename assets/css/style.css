@@ -18,7 +18,8 @@
     padding: 5px;
     font-size: 26px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px none black;
+    background: lightgrey;
 }
 
 #submit-btn {
@@ -94,3 +95,8 @@
     font-size: 20px;
 }
 /* End future forecast */
+
+/* Start history button syles */
+.history {
+    margin-top: 10px;
+}

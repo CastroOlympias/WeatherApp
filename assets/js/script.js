@@ -1,5 +1,4 @@
 var submitBtn = document.querySelector('#submit-btn');
-var searchTerm = document.querySelector('#city-search')
 
 
 // this conole logged a complete word "this" as test of my understanding
@@ -25,16 +24,20 @@ console.log(findCity);
 //         console.log(findCity[i])
 //         var button = document.createElement('button')
 //         button.textContent = findCity[i]
-//         history.appendChild(button)
+//         history.append(button)
 //         console.log(button)
 //     }
 // }
 // searchHistory();
 
+
 function createBtn (searchValue) {
-    var history = document.querySelector('#history');
-    var lI = document.createElement('li')
+    
+    var history = document.querySelector('.history');
+    var lI = document.createElement('button')
     lI.textContent = searchValue
+    lI.setAttribute('class', 'col-sm-12')
+    lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
     history.append(lI)
 }
 
@@ -49,9 +52,7 @@ event.preventDefault();
     var searchTerm = document.querySelector('#city-search').value;
 
     createBtn(searchTerm)
-    // findCity = searchTerm;
-    // var lowerCase = findCity.toLowerCase();
-    // console.log(lowerCase)
+
    
     var lowerCase = searchTerm.toLowerCase()
     console.log(lowerCase);
