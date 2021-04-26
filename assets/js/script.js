@@ -15,7 +15,7 @@ function searchHistory() {
         var button = document.createElement('button')
         button.textContent = findCity[i]
         history.append(button)
-        console.log(history)
+        console.log(findCity)
     }
 }
 searchHistory();
@@ -42,7 +42,7 @@ function findWeather(event) {
     // This changes user input to all lowercase, stores only lower case values in local storage and prevents duplicates values
     var lowerCase = searchTerm.toLowerCase()
     //console.log(lowerCase);
-    if (findCity.indexOf(lowerCase)=== -1) {
+    if (findCity.indexOf()=== -10) {
     findCity.push(lowerCase);
     localStorage.setItem('City', JSON.stringify(findCity));
     //console.log(findCity)
