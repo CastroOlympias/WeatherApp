@@ -38,6 +38,12 @@
 }
 /* End search form for your city */
 
+/* Start history button styles */
+.history {
+    margin-top: 10px;
+}
+/* Ends history button styles */
+
 /* Start weather for current day */
 .main {
     margin: 2px;
@@ -101,7 +107,3 @@
 }
 /* End future forecast */
 
-/* Start history button syles */
-.history {
-    margin-top: 10px;
-}

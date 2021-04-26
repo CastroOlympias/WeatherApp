@@ -1,119 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
 
-    <header class="hero">
-        <h1 class="app-title">Weather Dashboard</h1>
-    </header>
+<header class="hero">
+    <h1 class="app-title">Weather Dashboard</h1>
+</header>
+
+<main class="row main">
     
-    <main class="row main">
+    <!-- Start of two submain parts, container form and weather -->
+    <section class="col-lg-3">
+        <h1>Search for a City</h1>
+            <!-- Start form for searching out your cities weather -->
+            <form class="search-form">
+                <input class="col-sm-12" id="city-search" placeholder="Search City Here"></input>
+                <button class="col-sm-12" id="submit-btn">
+                    <text>Search</text>
+                </button>
+            </form>
+                <ul class="col-sm-12 history"></ul>
+    </section>
         
-        <!-- Start of two submain parts, container form and weather -->
-        
-            <div class="col-lg-3">
-                <h1>Search for a City</h1>
-                    <!-- Start form for searching out your cities weather -->
-                    <form class="search-form">
-                        <input class="col-sm-12" id="city-search" placeholder="Search City Here"></input>
-                    
-                        <button class="col-sm-12" id="submit-btn">
-                            <text>Search</text>
-                        </button>
-                    </form>
-
-                    
-                        <ul class="col-sm-12 history"></ul>
-                    
-
-            </div>
-            
-            <!--  Current weather -->
-            <div class="col-lg-9">
-                <div class="city-date-icon borders">
-                    <div id="city-weather-icon-container">
-                        <h1 id="city">City and Date:</h1>
-                        <div id="current-date">
-                        </div>
-                        <img id="current-weather-icon">
-                    </div>
-                    
-                    <div class="current-weather">
-                        <text class="climate" id="cur-temp">Current Temperature:</text>
-                        <text class="climate" id="max-temp">Maximum Temperature:</text>
-                        <text class="climate" id="min-temp">Minimum Temperature:</text>
-                        <text class="climate" id="wind">Wind Speed:</text>
-                        <text class="climate" id="humid">Humidity:</text>
-                    </div>
-            </div>
-
-                <!-- Start future weather forecast -->
-                <div class="col-lg-12">
-                    <h2>5-Day Weather Forecast:</h2>
-                    <div class="row" id="future-forecast">
-                        <!-- plus 1 weather -->
-                        <div class="col-lg-2 borders five-days">
-                            <h3 class="fore-cast-header day-one"></h3>
-                            <img id="plus-one-weather-icon">
-                            <text id="day-one-temp"></text>
-                            <text id="day-one-wind"></text>
-                            <text id="day-one-hum"></text>
-                        </div>
-                        <!--  plus 2 weather -->
-                        <div class="col-lg-2 borders five-days">
-                            <h3 class="fore-cast-header day-two"></h3>
-                            <img id="plus-two-weather-icon">
-                            <text id="day-two-temp"></text>
-                            <text id="day-two-wind"></text>
-                            <text id="day-two-hum"></text>
-                        </div>
-                        <!-- plus 3 weather-->
-                        <div class="col-lg-2 borders five-days">
-                            <h3 class="fore-cast-header day-three"></h3>
-                            <img id="plus-three-weather-icon">
-                            <text id="day-three-temp"></text>
-                            <text id="day-three-wind"></text>
-                            <text id="day-three-hum"></text>
-                        </div>
-                        <!-- plus 4 weather -->
-                        <div class="col-lg-2 borders five-days">
-                            <h3 class="fore-cast-header day-four"></h3>
-                            <img id="plus-four-weather-icon">
-                            <text id="day-four-temp"></text>
-                            <text id="day-four-wind"></text>
-                            <text id="day-four-hum"></text>
-                        </div>
-                        <!-- plus 5 weather -->
-                        <div class="col-lg-2 borders five-days">
-                            <h3 class="fore-cast-header day-five"></h3>
-                            <img id="plus-five-weather-icon">
-                            <text id="day-five-temp"></text>
-                            <text id="day-five-wind"></text>
-                            <text id="day-five-hum"></text>
-                        </div>
-                    </div>
+    <!--  Current weather -->
+    <section class="col-lg-9">
+        <aside class="city-date-icon borders">
+            <div id="city-weather-icon-container">
+                <h1 id="city">City and Date:</h1>
+                <div id="current-date">
                 </div>
-                <!-- End future wearther forecast -->
-
+                <img id="current-weather-icon">
             </div>
-        
-        <!-- End of two submain parts, container form and weather -->
+            <div class="current-weather">
+                <text class="climate" id="cur-temp">Current Temperature:</text>
+                <text class="climate" id="max-temp">Maximum Temperature:</text>
+                <text class="climate" id="min-temp">Minimum Temperature:</text>
+                <text class="climate" id="wind">Wind Speed:</text>
+                <text class="climate" id="humid">Humidity:</text>
+            </div>
+        </aside>
 
-        <div class="row">
-    
-        </div>
-    </main>
-    
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+        <!-- Start future weather forecast -->
+        <aside class="col-lg-12">
+            <h2>5-Day Weather Forecast:</h2>
+            <div class="row" id="future-forecast">
+                <!-- plus 1 weather -->
+                <div class="col-lg-2 borders five-days">
+                    <h3 class="fore-cast-header day-one"></h3>
+                    <img id="plus-one-weather-icon">
+                    <text id="day-one-temp"></text>
+                    <text id="day-one-wind"></text>
+                    <text id="day-one-hum"></text>
+                </div>
+                <!--  plus 2 weather -->
+                <div class="col-lg-2 borders five-days">
+                    <h3 class="fore-cast-header day-two"></h3>
+                    <img id="plus-two-weather-icon">
+                    <text id="day-two-temp"></text>
+                    <text id="day-two-wind"></text>
+                    <text id="day-two-hum"></text>
+                </div>
+                <!-- plus 3 weather-->
+                <div class="col-lg-2 borders five-days">
+                    <h3 class="fore-cast-header day-three"></h3>
+                    <img id="plus-three-weather-icon">
+                    <text id="day-three-temp"></text>
+                    <text id="day-three-wind"></text>
+                    <text id="day-three-hum"></text>
+                </div>
+                <!-- plus 4 weather -->
+                <div class="col-lg-2 borders five-days">
+                    <h3 class="fore-cast-header day-four"></h3>
+                    <img id="plus-four-weather-icon">
+                    <text id="day-four-temp"></text>
+                    <text id="day-four-wind"></text>
+                    <text id="day-four-hum"></text>
+                </div>
+                <!-- plus 5 weather -->
+                <div class="col-lg-2 borders five-days">
+                    <h3 class="fore-cast-header day-five"></h3>
+                    <img id="plus-five-weather-icon">
+                    <text id="day-five-temp"></text>
+                    <text id="day-five-wind"></text>
+                    <text id="day-five-hum"></text>
+                </div>
+            </div>
+        </aside>
+    </section>
+</main>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
