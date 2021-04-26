@@ -40,7 +40,7 @@
 
 /* Start history button styles */
 .history {
-    margin-top: 10px;
+    margin: 5px;
 }
 /* Ends history button styles */
 
@@ -82,7 +82,6 @@
 
 /* Start weather borders */
 .borders {
-        
     margin: 20px;
 }
 /* End weather borders */
