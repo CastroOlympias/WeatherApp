@@ -14,8 +14,12 @@ for (var i = 0; i < findCity.length; i++) {
 }
 
 function historySearch() {
-    
+    var searchTerm = document.querySelector('.searchBtn').value;
+    console.log(searchTerm)
+    findWeather(searchTerm);
 }
+
+
 
 // This foor loop is to append only the last 10 items found in the array of the search history. Code is still beta
 function searchHistory() {
@@ -36,17 +40,23 @@ function createBtn (searchValue) {
     lI.textContent = searchValue
     lI.setAttribute('class', 'col-sm-12 searchBtn')
     lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
+    lI.setAttribute('value', searchValue)
     history.append(lI)
 }
 
 // submit button begins the fuction to collect and apend the weather data to the webpage
-submitBtn.onclick = findWeather;
-function findWeather(event) {
-    event.preventDefault();
-
-    // Sets the searched cities as an array and stores into a variable for storage as a string of historical searches
+submitBtn.addEventListener('click', function(event){
+    event.preventDefault()
     var searchTerm = document.querySelector('#city-search').value;
+    console.log(searchTerm)
+    findWeather(searchTerm)
+});
+function findWeather(searchTerm) {
+    // event.preventDefault();
+    console.log(searchTerm)
+    // Sets the searched cities as an array and stores into a variable for storage as a string of historical searches
     
+    //var searchTerm = document.querySelector('#city-search').value;
 
     // This changes user input to all lowercase, stores only lower case values in local storage and prevents duplicates values
     var lowerCase = searchTerm.toLowerCase()
@@ -106,10 +116,10 @@ function findWeather(event) {
          currentIconWhole.setAttribute('src', currentWholeIcon);
     })
 
-    .catch(err => {
-        console.error(err);
-        alert("Check that you've spelled your city correctly!")
-    });
+    // .catch(err => {
+    //     console.error(err);
+    //     alert("Check that you've spelled your city correctly!")
+    // });
   
     // Five day forecast with forecast server api call
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' +
@@ -255,6 +265,11 @@ function findWeather(event) {
     })
 }
 
+var searchBtn = document.querySelector('.searchBtn')
+searchBtn.addEventListener('click', function(event) {
+    event.preventDefault()
+    historySearch()
+})
 
 // for looping through the array of previously searched cities
 // for (var i = 0; i < 10; i++);
