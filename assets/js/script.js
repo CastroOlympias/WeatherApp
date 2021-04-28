@@ -1,12 +1,21 @@
 var submitBtn = document.querySelector('#submit-btn');
 
 // Starts with an empty array
-var findCity = [];
+// var findCity = [];
 // console.log(localStorage.getItem("City"));
 
 // gets local storage string of historical city searches and puts them back into an array, so storage isn't empty on refresh
-findCity = JSON.parse(localStorage.getItem('City')) || [];
+var findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
+
+for (var i = 0; i < findCity.length; i++) {
+    createBtn(findCity[i])
+    console.log(findCity[i]);
+}
+
+function historySearch() {
+    
+}
 
 // This foor loop is to append only the last 10 items found in the array of the search history. Code is still beta
 function searchHistory() {
@@ -25,7 +34,7 @@ function createBtn (searchValue) {
     var history = document.querySelector('.history');
     var lI = document.createElement('button')
     lI.textContent = searchValue
-    lI.setAttribute('class', 'col-sm-12')
+    lI.setAttribute('class', 'col-sm-12 searchBtn')
     lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
     history.append(lI)
 }
@@ -37,13 +46,14 @@ function findWeather(event) {
 
     // Sets the searched cities as an array and stores into a variable for storage as a string of historical searches
     var searchTerm = document.querySelector('#city-search').value;
-    createBtn(searchTerm)
+    
 
     // This changes user input to all lowercase, stores only lower case values in local storage and prevents duplicates values
     var lowerCase = searchTerm.toLowerCase()
     //console.log(lowerCase);
-    if (findCity.indexOf()=== -10) {
+    if (findCity.indexOf(lowerCase)=== -1) {
     findCity.push(lowerCase);
+    createBtn(searchTerm)
     localStorage.setItem('City', JSON.stringify(findCity));
     //console.log(findCity)
     }
