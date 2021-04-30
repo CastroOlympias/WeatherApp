@@ -9,14 +9,16 @@ var findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
 
 // This pulls from the findCity array, starting from the last positiion of the array
-var ninth = findCity[findCity.length - 1];
-var tenth = findCity[findCity.length - 2];
+var seventh = findCity[findCity.length - 4];
+var eigth = findCity[findCity.length - 3];
+var ninth = findCity[findCity.length - 2];
+var tenth = findCity[findCity.length - 1];
+var both = [tenth, ninth, eigth, seventh]
 console.log(ninth);
 console.log(tenth);
-var both = ninth + tenth
 console.log(both)
 console.log(ninth + tenth)
-
+localStorage.setItem('Key', JSON.stringify(both));
 
 
 for (var i = 0; i < findCity.length; i++) {
