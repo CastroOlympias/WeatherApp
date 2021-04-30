@@ -8,6 +8,17 @@ var submitBtn = document.querySelector('#submit-btn');
 var findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
 
+// This pulls from the findCity array, starting from the last positiion of the array
+var ninth = findCity[findCity.length - 1];
+var tenth = findCity[findCity.length - 2];
+console.log(ninth);
+console.log(tenth);
+var both = ninth + tenth
+console.log(both)
+console.log(ninth + tenth)
+
+
+
 for (var i = 0; i < findCity.length; i++) {
     createBtn(findCity[i])
     console.log(findCity[i]);
