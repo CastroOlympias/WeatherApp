@@ -1,73 +1,17 @@
 var submitBtn = document.querySelector('#submit-btn');
 
-// Starts with an empty array
-// var findCity = [];
-// console.log(localStorage.getItem("City"));
-
 // gets local storage string of historical city searches and puts them back into an array, so storage isn't empty on refresh
 const findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
 
-
-
-const searchHistory = function () {
-    const findCity = JSON.parse(localStorage.getItem('City')) || [];
-    recentSix = findCity.splice(-10)
-    console.log(recentSix)
+function historySearch() {
+    var searchTerm = document.querySelector('.searchBtn').value;
+    console.log(searchTerm)
+    findWeather(searchTerm);
 }
 
-searchHistory()
+// historySearch()
 
-
-
-// This pulls from the findCity array, starting from the last positiion of the array
-// var seventh = findCity[findCity.length - 4];
-// var eigth = findCity[findCity.length - 3];
-// var ninth = findCity[findCity.length - 2];
-// var tenth = findCity[findCity.length - 1];
-// var all = [tenth, ninth, eigth, seventh]
-// console.log(ninth);
-// console.log(tenth);
-// console.log(all)
-// console.log(ninth + tenth)
-// localStorage.setItem('Key', JSON.stringify(all));
-
-
-// for (var i = 0; i < recentSix.length; i++) {
-//     createBtn(recentSix[i])
-//     // console.log(findCity[i]);
-// }
-
-// function historySearch() {
-//     var searchTerm = document.querySelector('.searchBtn').value;
-//     console.log(searchTerm)
-//     findWeather(searchTerm);
-// }
-
-
-
-// This foor loop is to append only the last 10 items found in the array of the search history. Code is still beta
-// function searchHistory() {
-//     for (var i = findCity.length - 1; i >= 10; i--) {
-//         console.log(findCity[i])
-//         var button = document.createElement('button')
-//         button.textContent = findCity[i]
-//         history.append(button)
-//         console.log(findCity)
-//     }
-// }
-// searchHistory();
-
-// This creates a button from the search, working beta, would like to create button from local storage to prevent duplicate buttons
-// function createBtn(searchValue) {
-//     var history = document.querySelector('.history');
-//     var lI = document.createElement('button')
-//     lI.textContent = searchValue
-//     lI.setAttribute('class', 'col-sm-12 searchBtn')
-//     lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
-//     lI.setAttribute('value', searchValue)
-//     history.append(lI)
-// }
 
 // submit button begins the fuction to collect and apend the weather data to the webpage
 submitBtn.addEventListener('click', function (event) {
@@ -76,24 +20,15 @@ submitBtn.addEventListener('click', function (event) {
     console.log(searchTerm)
     findWeather(searchTerm)
 });
+
 function findWeather(searchTerm) {
-    // event.preventDefault();
     console.log(searchTerm)
-    // Sets the searched cities as an array and stores into a variable for storage as a string of historical searches
-
-    //var searchTerm = document.querySelector('#city-search').value;
-
-
-
-
+  
     // This changes user input to all lowercase, stores only lower case values in local storage and prevents duplicates values
     var lowerCase = searchTerm.toLowerCase()
-    //console.log(lowerCase);
     if (findCity.indexOf(lowerCase) === -1) {
         findCity.push(lowerCase);
-        // createBtn(searchTerm)
         localStorage.setItem('City', JSON.stringify(findCity));
-        //console.log(findCity)
     }
 
     // current day weather with with current weather server api call
@@ -293,12 +228,29 @@ function findWeather(searchTerm) {
         })
 }
 
-// var searchBtn = document.querySelector('.searchBtn')
-// searchBtn.addEventListener('click', function (event) {
-//     event.preventDefault()
-//     historySearch()
-// })
 
-// for looping through the array of previously searched cities
-// for (var i = 0; i < 10; i++);
-// console.log(findCity);
+
+
+
+const createHistoryButton = function (recentTen) {
+    const findCity = JSON.parse(localStorage.getItem('City')) || [];
+    recentTen = findCity.splice(-10)
+    console.log(recentTen)
+
+    const historyForm = document.getElementById('history')
+
+    for (var i = 0; i < recentTen.length; i++) {
+
+        const historyButton = document.createElement('button')
+        historyButton.setAttribute('class', 'col-sm-12 searchBtn')
+        historyButton.setAttribute('value', `${recentTen[i]}`)
+        historyButton.textContent = `${recentTen[i]}`
+        
+        historyButton.type = 'submit'
+       
+        historyForm.appendChild(historyButton)
+
+    }
+}
+
+createHistoryButton()
