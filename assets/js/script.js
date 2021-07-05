@@ -7,8 +7,18 @@ var submitBtn = document.querySelector('#submit-btn');
 // gets local storage string of historical city searches and puts them back into an array, so storage isn't empty on refresh
 const findCity = JSON.parse(localStorage.getItem('City')) || [];
 console.log(findCity);
-// recentSix = findCity.splice(-2)
-// console.log(recentSix)
+
+
+
+const searchHistory = function () {
+    const findCity = JSON.parse(localStorage.getItem('City')) || [];
+    recentSix = findCity.splice(-10)
+    console.log(recentSix)
+}
+
+searchHistory()
+
+
 
 // This pulls from the findCity array, starting from the last positiion of the array
 // var seventh = findCity[findCity.length - 4];
@@ -28,11 +38,11 @@ console.log(findCity);
 //     // console.log(findCity[i]);
 // }
 
-function historySearch() {
-    var searchTerm = document.querySelector('.searchBtn').value;
-    console.log(searchTerm)
-    findWeather(searchTerm);
-}
+// function historySearch() {
+//     var searchTerm = document.querySelector('.searchBtn').value;
+//     console.log(searchTerm)
+//     findWeather(searchTerm);
+// }
 
 
 
@@ -49,15 +59,15 @@ function historySearch() {
 // searchHistory();
 
 // This creates a button from the search, working beta, would like to create button from local storage to prevent duplicate buttons
-function createBtn(searchValue) {
-    var history = document.querySelector('.history');
-    var lI = document.createElement('button')
-    lI.textContent = searchValue
-    lI.setAttribute('class', 'col-sm-12 searchBtn')
-    lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
-    lI.setAttribute('value', searchValue)
-    history.append(lI)
-}
+// function createBtn(searchValue) {
+//     var history = document.querySelector('.history');
+//     var lI = document.createElement('button')
+//     lI.textContent = searchValue
+//     lI.setAttribute('class', 'col-sm-12 searchBtn')
+//     lI.setAttribute('style', 'margin: 5px; background: lightgrey; border-radius: 5px; font-size: 25px; border: none;')
+//     lI.setAttribute('value', searchValue)
+//     history.append(lI)
+// }
 
 // submit button begins the fuction to collect and apend the weather data to the webpage
 submitBtn.addEventListener('click', function (event) {
