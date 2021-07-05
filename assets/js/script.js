@@ -23,7 +23,7 @@ submitBtn.addEventListener('click', function (event) {
 
 function findWeather(searchTerm) {
     console.log(searchTerm)
-  
+
     // This changes user input to all lowercase, stores only lower case values in local storage and prevents duplicates values
     var lowerCase = searchTerm.toLowerCase()
     if (findCity.indexOf(lowerCase) === -1) {
@@ -226,11 +226,9 @@ function findWeather(searchTerm) {
             var plusFiveIcon = document.querySelector('#plus-five-weather-icon')
             plusFiveIcon.setAttribute('src', plusFiveWholeIcon);
         })
+
+    
 }
-
-
-
-
 
 const createHistoryButton = function (recentTen) {
     const findCity = JSON.parse(localStorage.getItem('City')) || [];
@@ -238,19 +236,37 @@ const createHistoryButton = function (recentTen) {
     console.log(recentTen)
 
     const historyForm = document.getElementById('history')
-
+    
     for (var i = 0; i < recentTen.length; i++) {
 
         const historyButton = document.createElement('button')
         historyButton.setAttribute('class', 'col-sm-12 searchBtn')
         historyButton.setAttribute('value', `${recentTen[i]}`)
         historyButton.textContent = `${recentTen[i]}`
-        
+
         historyButton.type = 'submit'
-       
+        
         historyForm.appendChild(historyButton)
+       
 
     }
+
+    var historyButton = document.querySelector('.searchBtn')
+    historyButton.addEventListener('click', function (event) {
+        event.preventDefault()
+        historySearch()
+
+        console.log(historyButton)
+    })
+
+
+    //     historyButton = document.querySelector('.searchBtn').addEventListener('click', historySearch())
+    //     console.log(recentTen)
+
 }
 
+
+
+
 createHistoryButton()
+
