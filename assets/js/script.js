@@ -10,9 +10,6 @@ function historySearch() {
     findWeather(searchTerm);
 }
 
-// historySearch()
-
-
 // submit button begins the fuction to collect and apend the weather data to the webpage
 submitBtn.addEventListener('click', function (event) {
     event.preventDefault()
@@ -230,6 +227,15 @@ function findWeather(searchTerm) {
     
 }
 
+const newSearch = function(recentTen) {
+    var historyButton = document.querySelector('.searchBtn')
+    historyButton.addEventListener('click', function (event) {
+        event.preventDefault()
+        historySearch(historyButton)
+        console.log(historyButton)
+    })
+}
+
 const createHistoryButton = function (recentTen) {
     const findCity = JSON.parse(localStorage.getItem('City')) || [];
     recentTen = findCity.splice(-10)
@@ -243,30 +249,14 @@ const createHistoryButton = function (recentTen) {
         historyButton.setAttribute('class', 'col-sm-12 searchBtn')
         historyButton.setAttribute('value', `${recentTen[i]}`)
         historyButton.textContent = `${recentTen[i]}`
-
         historyButton.type = 'submit'
-        
         historyForm.appendChild(historyButton)
-       
+        console.log(recentTen)
 
     }
-
-    var historyButton = document.querySelector('.searchBtn')
-    historyButton.addEventListener('click', function (event) {
-        event.preventDefault()
-        historySearch()
-
-        console.log(historyButton)
-    })
-
-
-    //     historyButton = document.querySelector('.searchBtn').addEventListener('click', historySearch())
-    //     console.log(recentTen)
-
+    newSearch()
 }
 
-
-
-
 createHistoryButton()
+
 
